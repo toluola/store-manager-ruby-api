@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Product API", type: :request do
@@ -67,23 +69,23 @@ RSpec.describe "Product API", type: :request do
   end
 
   describe "PUT /products/:id" do
-    let(:valid_atrributes) { { name: "tolulope"}}
-    before { put "/products/#{product_id}"}
+    let(:valid_atrributes) { { name: "tolulope" } }
+    before { put "/products/#{product_id}" }
 
     it "updates the record" do
-        expect(response.body).to be_empty
+      expect(response.body).to be_empty
     end
 
     it "returns status code of 204" do
-        expect(response).to have_http_status(204)
+      expect(response).to have_http_status(204)
     end
   end
 
   describe "DELETE /products/:id" do
-    before {delete "/products/#{product_id}"}
+    before { delete "/products/#{product_id}" }
 
     it "returns status code of 204" do
-        expect(response).to have_http_status(204)
+      expect(response).to have_http_status(204)
     end
   end
 end
