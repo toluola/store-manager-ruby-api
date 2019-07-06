@@ -2,6 +2,7 @@
 
 class ProductsController < ApplicationController
   include Response
+  include Exception_Handler
 
   def create
     @product = Product.create!(permit_params)
