@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :fetch_products, only: [:show, :destroy, :update] 
+  before_action :fetch_products, only: %i(show destroy update)
   include Response
   include Exception_Handler
 
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   def show
     json_response(@product, "Product Fetched Successfully")
   end
-  
+
   def destroy
     @product.destroy
     json_response(@product, "Product Deleted Successfully")
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   private
 
   def permit_params
-    params.permit(:name, :quantity, {:category => []}, :image)
+    params.permit(:name, :quantity, { category: [] }, :image)
   end
 
   def fetch_products
