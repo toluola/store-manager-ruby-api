@@ -39,6 +39,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    bcrypt (3.1.13)
     builder (3.2.3)
     byebug (11.0.1)
     concurrent-ruby (1.1.5)
@@ -64,6 +65,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    jwt (2.1.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -175,10 +177,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   byebug
   database_cleaner
   factory_bot_rails (~> 4.0)
   faker
+  jwt
   listen (~> 3.0.5)
   pg
   puma (~> 3.0)
