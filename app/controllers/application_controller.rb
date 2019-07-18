@@ -1,4 +1,12 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
+    before_action :authorize_user
+    attr_reader :current_user
+
+    private
+
+    def authorize_user
+      @curret_user = (AuthorizeApiRequest.new(request.headers).call)[:user]  
+    end
 end

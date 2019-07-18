@@ -1,7 +1,11 @@
 class AuthenticationController < ApplicationController
-    def Authenticate
-        auth = AuthenticateUser.new(username: accept_params[:username], password: params[:password]).call
-        json_response(token: auth, "User logged Successfully")
+    skip_before_action :authorize_user, only: :authenticate
+    include Response
+    include ExceptionHandler
+
+    def authenticate
+        auth = AuthenticateUser.new(accept_params[:username], accept_params[:password]).call
+        json_response({token: auth}, "User logged Successfully")
     end
 
     private
