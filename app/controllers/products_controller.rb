@@ -3,7 +3,7 @@
 class ProductsController < ApplicationController
   before_action :fetch_products, only: %i(show destroy update)
   include Response
-  include Exception_Handler
+  include ExceptionHandler
 
   def create
     @product = Product.create!(permit_params)
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   private
 
   def permit_params
-    params.permit(:name, :quantity, { category: [] }, :image)
+    params.permit(:name, :quantity, { category: [] }, :image, created_by: current_user.id)
   end
 
   def fetch_products

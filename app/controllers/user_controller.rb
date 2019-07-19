@@ -21,8 +21,8 @@ class UserController < ApplicationController
   end
 
   def check_admin
-    if current_user.role = "admin"
-      error_json_response("you are an admin", :unprocessable_entity)
-   end
-end
+    if current_user.role != "admin"
+        error_json_response("you are not authorized to perform this operation", :unauthorized)
+    end
+  end
 end
