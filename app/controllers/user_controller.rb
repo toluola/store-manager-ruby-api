@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UserController < ApplicationController
+  before_action :check_admin
   include Response
   include ExceptionHandler
 
@@ -18,4 +19,10 @@ class UserController < ApplicationController
   def accept_params
     params.permit(:username, :password, :name)
   end
+
+  def check_admin
+    if current_user.role = "admin"
+      error_json_response("you are an admin", :unprocessable_entity)
+   end
+end
 end
