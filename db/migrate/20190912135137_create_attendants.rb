@@ -4,6 +4,7 @@ class CreateAttendants < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :username
       t.string :password_digest
+      t.string :role, default: "attendant"
 
       t.timestamps
     end

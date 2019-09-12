@@ -3,8 +3,9 @@ class CreateProducts < ActiveRecord::Migration[5.0]
     create_table :products do |t|
       t.string :name
       t.integer :quantity
-      t.text :category
       t.string :image
+      t.string :category, array: true, default: []
+      t.references :attendant, foreign_key: true
 
       t.timestamps
     end

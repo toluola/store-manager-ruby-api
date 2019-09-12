@@ -22,7 +22,7 @@ class UserController < ApplicationController
 
   def check_admin
     if current_user.role != "admin"
-        error_json_response("you are not authorized to perform this operation", :unauthorized)
+      error_json_response("you are not authorized to perform this operation", :unauthorized)
     end
   end
 end
