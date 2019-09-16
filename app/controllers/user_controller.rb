@@ -10,7 +10,7 @@ class UserController < ApplicationController
                                     password: accept_params[:password],
                                     name: accept_params[:name])
     json_response(create_user.slice(:id, :name, :username, :created_at, :updated_at),
-                  "Attendant created Successfully",
+                  "Attendant created successfully",
                   :created)
   end
 

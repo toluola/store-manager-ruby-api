@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   include ExceptionHandler
 
   def create
-    @product = Product.create!(permit_params)
+    @product = current_user.products.create!(permit_params)
     json_response(@product, "Product created successfully", :created)
   end
 
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   private
 
   def permit_params
-    params.permit(:name, :quantity, { category: [] }, :image, created_by: current_user.id)
+    params.permit(:name, :quantity, { category: [] }, :image)
   end
 
   def fetch_products
